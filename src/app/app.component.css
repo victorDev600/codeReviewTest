@@ -1,0 +1,87 @@
+h5{
+	text-align: center;
+	font-weight:bold;
+	margin:0px;
+}
+td, th {
+    padding: 0px 10px;
+}
+p{
+	padding:0px 10px;
+}
+input{
+	height:1.1rem !important;
+	margin:0px !important;
+}
+
+.details input{
+	border-bottom: none !important;
+}
+.main-section{
+	margin: 1rem auto;
+	max-width: 60rem;
+}
+.fee{
+	max-width: 40rem;
+	margin: 0rem auto;
+}
+.info{
+	max-width: 100%;
+}
+.center{
+	text-align: center;
+}
+.details{
+	border: 1px solid rgba(0, 0, 0, 0.87);
+	max-width: 35rem;
+	margin: 0rem auto;
+}
+.details tr td, .account tr td{
+	border: 1px solid rgba(0, 0, 0, 0.87);
+}
+.bottomRow{
+	text-align: center; 
+	padding-top:5px;
+}
+.dateSpan{
+	float: right
+}
+.signHere{
+	background: lightyellow;
+    padding: 10px;
+}
+.model{
+	width:25rem; 
+	text-align: center;
+}
+.feeInput{
+	width:100px !important;
+}
+@media print{
+	.btnCard{
+		display: none;
+	}
+	.card-content{
+		padding:0px;
+		margin:0px;
+	}
+	.main-section{
+		margin:0px;
+	}
+	input{
+		border-bottom: none !important;
+		font-size: 10pt !important;
+	}
+	.bottomRow {
+		position: fixed;
+		bottom: 0;
+		font-size: 10pt;
+		font-family: "Roboto", sans-serif;
+	}
+}
+.datepicker{
+	cursor: pointer;
+}
+hr{
+	border-top: dotted 1px;
+}

@@ -1,0 +1,192 @@
+<div class="row main-section">
+  <div class="card">
+    <div class="card-content">
+      <h5>Further Drawdown Facility / Line of Credit Agreement</h5>
+      <table class="info">
+        <tr>
+          <td width="10%">Lender:</td>
+          <td>Noble Hub Pty Ltd (ACN 619 195 747)</td>
+        </tr>
+        <tr>
+          <td>Loan ID:</td>
+          <td>{{data.account_no}}</td>
+        </tr>
+        <tr>
+          <td>Date:</td>
+          <td><input id="date" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[DatePickerOptions]" [(ngModel)]="data.date"></td>
+        </tr>
+        <tr>
+          <td>Borrower(s):</td>
+          <td><input id="borrower_name" type="text" class="" [(ngModel)]="data.borrower_name"></td>
+        </tr>
+        <tr *ngIf="data.borrower_name_next != ''">
+          <td></td>
+          <td><input id="borrower_name_next" type="text" class="" [(ngModel)]="data.borrower_name_next"></td>
+        </tr>
+      </table>
+      <p>The borrower(s) applies for a further Drawdown on the exisitng loan. (Loan ID {{data.account_no}})</p>
+      <p>Both Lender and Borrower(s) agree to the new facility finance details as below:</p>
+      <table class="fee">
+        <tr>
+          <td><strong>Further Drawdown Amount</strong></td>
+          <td><strong><input id="drawdown_amount" type="text" class="feeInput" [(ngModel)]="data.drawdown_amount" (change)="principalCal()" appCurrencyFormatter></strong></td>
+        </tr>
+        <tr>
+          <td><strong>Current balance (as of agreement date)</strong></td>
+          <td><strong><input id="current_balance" type="text" class="feeInput" [(ngModel)]="data.current_balance" (change)="principalCal()" appCurrencyFormatter></strong></td>
+        </tr>
+        <tr>
+          <td>Admin & Legal Fees</td>
+          <td><input id="admin_fee" type="text" class="feeInput" [(ngModel)]="data.admin_fee" (change)="principalCal()" appCurrencyFormatter></td>
+        </tr>
+        <tr>
+          <td>Valuation Fee</td>
+          <td><input id="valuation_fee" type="text" class="feeInput" [(ngModel)]="data.valuation_fee" (change)="principalCal()" appCurrencyFormatter></td>
+        </tr>
+        <tr>
+          <td>Verification Fee</td>
+          <td><input id="verification_fee" type="text" class="feeInput" [(ngModel)]="data.verification_fee" (change)="principalCal()" appCurrencyFormatter></td>
+        </tr>
+        <tr>
+          <td>Legal and Government Registration Fee</td>
+          <td><input id="registration_fee" type="text" class="feeInput" [(ngModel)]="data.registration_fee" (change)="principalCal()" appCurrencyFormatter></td>
+        </tr>
+        <tr>
+          <td>Brokerage / Referrer Fee</td>
+          <td><input id="referrer_fee" type="text" class="feeInput" [(ngModel)]="data.referrer_fee" (change)="principalCal()" appCurrencyFormatter></td>
+        </tr>
+        <tr>
+          <td><strong>New Loan Amount (Principal)</strong></td>
+          <td><strong>${{data.new_amount | currency}}</strong></td>
+        </tr>
+      </table>
+      <p class="center"><strong>Current and New Loan Details after Variation</strong></p>
+      <table class="details">
+        <tr style="background: lightgrey">
+          <td width="40%"><strong></strong></td>
+          <td width="30%"><strong>Current</strong></td>
+          <td width="30%"><strong>New</strong></td>
+        </tr>
+        <tr>
+          <td>Repayment</td>
+          <td><input id="repayment_current" type="text" class="" [(ngModel)]="data.repayment_current" appCurrencyFormatter></td>
+          <td><input id="repayment_new" type="text" class="" [(ngModel)]="data.repayment_new" appCurrencyFormatter></td>
+        </tr>
+        <tr>
+          <td>Low Rate (Concession Rate)</td>
+          <td><input id="low_rate_current" type="text" class="" [(ngModel)]="data.low_rate_current"></td>
+          <td><input id="low_rate_new" type="text" class="" [(ngModel)]="data.low_rate_new"></td>
+        </tr>
+        <tr>
+          <td>Frequency</td>
+          <td>
+            <select id="frequency_current" [(ngModel)]="data.frequency_current" materialize="material_select">
+              <option value="Weekly">Weekly</option>
+              <option value="Fortnightly">Fortnightly</option>
+              <option value="Monthly">Monthly</option>
+            </select>
+          </td>
+          <td>
+            <select id="frequency_new" [(ngModel)]="data.frequency_new" materialize="material_select">
+              <option value="Weekly">Weekly</option>
+              <option value="Fortnightly">Fortnightly</option>
+              <option value="Monthly">Monthly</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Contract Maturity</td>
+          <td><input id="maturity_current" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[DatePickerOptions]"  [(ngModel)]="data.maturity_current"></td>
+          <td><input id="maturity_new" type="text" class="datepicker" materialize="pickadate" [materializeParams]="[DatePickerOptions]"  [(ngModel)]="data.maturity_new"></td>
+        </tr>
+        <tr>
+          <td>Balloon</td>
+          <td><input id="balloon_current" type="text" class="" [(ngModel)]="data.balloon_current" appCurrencyFormatter></td>
+          <td><input id="balloon_new" type="text" class="" [(ngModel)]="data.balloon_new" appCurrencyFormatter></td>
+        </tr>
+      </table>
+      <p><strong>Drawdown Settlement Funds</strong></p>
+      <table class="account">
+        <tr style="background: lightgrey">
+          <td>Your direct the lender to disburse the full Further Drawdown Amount to the following bank account:</td>
+        </tr>
+        <tr>
+          <td>
+            <p>Bank Account Holder Name:<input id="account_holder" type="text" class="" [(ngModel)]="data.account_holder" style="width:400px;"></p>
+            <p>
+              Bank Name: <input id="bank_name" type="text" class="" [(ngModel)]="data.bank_name" style="width:150px;">
+              BSB: <input id="bsb" type="text" class="" [(ngModel)]="data.bsb" style="width:100px;">
+              Account: <input id="account_name" type="text" class="" [(ngModel)]="data.account_name" style="width:150px;">
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <p>This variation agreement is subject to passing all verification required by the lender and can at any time be varied again and cancelled by the lender prior to settlement of this Further Drawdown Facility.</p>
+      <p>All other terms and conditions of the loan contract (Loan ID {{data.account_no}}) remain unchanged.</p>
+
+      <p><strong>ACCEPTANCE</strong></p>
+      <div *ngIf="data.show_witness == false || data.show_witness == ''|| data.show_witness == null">
+        <div *ngFor="let Sig of data.Sig">
+          <p>
+          <br>___________________________________________________________<span class="signHere"> &#9664; Sign Here</span><span class="dateSpan">Date:{{data.date}}</span><br>
+          Signature of Borrower: {{Sig.Name}}<br>
+          {{Sig.Note}}</p>
+        </div>
+      </div>
+
+      <div *ngIf="data.show_witness == true">
+
+        <div *ngFor="let Sig of data.Sig" >
+          <p>
+          <br><br><br>___________________________________________________________<span class="signHere"> &#9664; Sign Here</span><span class="dateSpan">Date:{{data.date}}</span><br>
+          <strong>Signature of Borrower: {{Sig.Name}}</strong><br>
+          {{Sig.Note}}</p>
+          <hr>
+          <p><strong>Statement by the witness</strong></p>
+          <p>I have examined his / her Driver License / Passport (Document number______________) and certify the borrower(s) has sign this documents in front of me</p>
+          <table border="0" style="width:100%">
+            <tr>
+                <td width="70%"><strong>Signature of Witness:</strong>______________________<br>
+                Full Name:________________________________<br>
+                Phone No:______________Mobile_____________<br>
+                <span style="font-size:12px;"><strong>(We may call within a few days, please take a record of this page.)</strong></span><br>
+                Address:__________________________________<br>
+                Qualification: JP/C.Dec/Solicitor/CPA,CA/Tax Agent/Postal Manager/Other<br>
+                Qualification Number/Registration Number___________</td>
+                <td width="30%">
+                <img src="http://maxloans.com.au/images/contract/stamphere.png" style="width:350px; margin-bottom: 20px;"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <p class="bottomRow"><strong>Loan Manager: </strong>Mutual Service (www.mutualservice.com.au) Ph:02 8015 8965</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Trigger -->
+<div class="card btnCard" style="width:400px; margin:10px; position: fixed; top:20px;">
+  <div class="card-content">
+    <div style="text-align: center;">
+      <a class="waves-effect waves-light btn" (click)="saveData()">Save</a>
+      <a class="waves-effect waves-light btn" (click)="witnessToggle()">Show Witness</a>
+    </div>
+    <div style="margin-top:20px;">
+      <table *ngFor="let Applicant of data.Applicant">
+        <tr>
+          <td>{{Applicant.Name}}</td>
+          <td style="width:160px;">
+            <select materialize="material_select" [(ngModel)]="Applicant.Role" (change)="Signature()">
+              <option value="Borrower">Borrower</option>
+              <option value="Company">Company</option>
+              <option value="Director">Director</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

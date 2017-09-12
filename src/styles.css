@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+	background-color: lightgrey;
+}
+@media print{
+	body{
+		background-color: white;
+		font-size: 10pt;
+	}
+}
+.select-wrapper input.select-dropdown{
+	margin:0 0 3px 0 !important;
+	height: 1.25rem !important;
+}
